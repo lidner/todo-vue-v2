@@ -21,7 +21,7 @@
               v-focus
             />
           </div>
-          <div class="remove-item" @click="removeTodo(index)">&times;</div>
+          <div class="remove-item" @click="removeTodo(id)">&times;</div>
     </div>
 </template>
 <script>
@@ -64,11 +64,12 @@ export default {
             } else {
                 this.completed = this.todo.completed
             }
+            // this.completed = this.checkAll ? true : this.todo.completed
         }
     },
     methods: {
-        removeTodo(index) {
-            this.$emit('removedTodo', index);
+        removeTodo(id) {
+            this.$store.dispatch('deleteTodo', id)
         },
         editTodo() {
             this.beforeEditCache = this.title;
@@ -80,16 +81,26 @@ export default {
             }
 
             this.editing = false;
-            this.$emit('finishedEdit', {
-                'index': this.index,
-                'todo': {
-                    'id': this.id,
-                    'title': this.title,
-                    'completed': this.completed,
-                    'editing': this.editing,
-                    // 'beforeEditCache': this.beforeEditCache
-                }
-            });
+            this.$store.dispatch('updateTodo', {
+                'id': this.id,
+                'title': this.title,
+                'completed': this.completed,
+                'editing': this.editing,
+                // 'beforeEditCache': this.beforeEditCache
+            })
+
+            
+
+            // this.$eventBus.$emit('finishedEdit', {
+            //     'index': this.index,
+            //     'todo': {
+            //         'id': this.id,
+            //         'title': this.title,
+            //         'completed': this.completed,
+            //         'editing': this.editing,
+            //         // 'beforeEditCache': this.beforeEditCache
+            //     }
+            // });
         },
         cancelEdit() {
             this.title = this.beforeEditCache;

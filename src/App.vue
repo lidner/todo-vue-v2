@@ -31,10 +31,10 @@ export default {
   box-sizing: border-box;
 } */
 
-.container {
+/* .container {
   max-width: 600px;
   margin: 0 auto;
-}
+} */
 
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
