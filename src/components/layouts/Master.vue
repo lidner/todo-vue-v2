@@ -1,12 +1,12 @@
 <template>
     <div id="app">
-        <ul class="nav">
-            <li><router-link :to="{ name: 'landing' }">Landing</router-link></li>
+        <!-- <ul class="nav">
+            <li><router-link :to="{ name: 'home' }">Landing</router-link></li>
             <li><router-link :to="{ name: 'todo' }">Todo</router-link></li>
             <li><router-link :to="{ name: 'about' }">About</router-link></li>
             <li><router-link :to="{ name: 'login' }">Login</router-link></li>
             <li><router-link :to="{ name: 'register' }">Register</router-link></li>
-        </ul>
+        </ul> -->
         <router-view></router-view>
     </div>
 </template>
@@ -31,7 +31,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    font-size: 24px;
+    // font-size: 24px;
     height: 100vh;
 }
   
