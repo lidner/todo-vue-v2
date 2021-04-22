@@ -13,7 +13,10 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
+    meta: {
+      layout: 'landing'
+    }
   },
   {
     path: '/todo',
@@ -36,7 +39,8 @@ const routes = [
     name: 'login',
     component: Login,
     meta: {
-      requiresGuest: true
+      requiresGuest: true,
+      layout: 'landing'
     }
   },
   {
@@ -44,7 +48,8 @@ const routes = [
     name: 'register',
     component: Register,
     meta: {
-      requiresGuest: true
+      requiresGuest: true,
+      layout: 'landing'
     }
   },
   {

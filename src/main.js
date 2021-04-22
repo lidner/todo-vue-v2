@@ -2,6 +2,8 @@
 import Vue from 'vue'
 // import App from './App.vue'
 import Master from '@/components/layouts/Master.vue'
+import LandingLayout from '@/components/layouts/LandingLayout.vue'
+import SideNavLayout from '@/components/layouts/SideNavLayout.vue'
 import router from './router'
 import store from './store'
 
@@ -11,6 +13,9 @@ Vue.prototype.$eventBus = new Vue(); // Global event bus
 
 Vue.config.productionTip = false
 
+
+Vue.component('landing-layout', LandingLayout);
+Vue.component('default-layout', SideNavLayout);
 
 
 
