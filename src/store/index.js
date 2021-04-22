@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
+axios.defaults.baseURL = 'http://meeting.prodev.kz/auth/'
 
 export default new Vuex.Store({
   state: {
+    token: localStorage.getItem('token') || null,
     filter: 'all',
     todos: [
       {
@@ -22,6 +25,9 @@ export default new Vuex.Store({
     ]
   },
   getters: {
+    loggedIn(state) {
+      return state.token != null
+    },
     remaining(state) {
       return state.todos.filter((todo) => !todo.completed).length;
     },
@@ -74,6 +80,12 @@ export default new Vuex.Store({
     },
     clearCompleted(state) {
       state.todos = state.todos.filter(todo => !todo.completed)
+    },
+    retrieveToken(state, token) {
+      state.token = token
+    },
+    destroyToken(state) {
+      state.token = null
     }
   },
   actions: {
@@ -96,6 +108,27 @@ export default new Vuex.Store({
     },
     clearCompleted(context) {
       context.commit('clearCompleted');
+    },
+    retrieveToken(context, credentials) {
+      return new Promise((resolve, reject) => {
+        axios.post('/login_iin/', {
+          username: credentials.username,
+          password: credentials.password
+        })
+        .then(response => {
+          const token = response.data.token
+          localStorage.setItem('token', token)
+          context.commit('retrieveToken', token)
+          resolve(response)
+        })
+        .catch(error => {
+          reject(error)
+        })
+      })
+    },
+    destroyToken(context) {
+      localStorage.removeItem('token')
+      context.commit('destroyToken')
     }
   },
   modules: {

@@ -1,19 +1,24 @@
 <template>
     <div id="app">
-        <!-- <ul class="nav">
-            <li><router-link :to="{ name: 'home' }">Landing</router-link></li>
-            <li><router-link :to="{ name: 'todo' }">Todo</router-link></li>
-            <li><router-link :to="{ name: 'about' }">About</router-link></li>
-            <li><router-link :to="{ name: 'login' }">Login</router-link></li>
-            <li><router-link :to="{ name: 'register' }">Register</router-link></li>
-        </ul> -->
+        <ul class="nav">
+            <li v-if="loggedIn"><router-link :to="{ name: 'home' }">Landing</router-link></li>
+            <li v-if="loggedIn"><router-link :to="{ name: 'todo' }">Todo</router-link></li>
+            <li v-if="loggedIn"><router-link :to="{ name: 'about' }">About</router-link></li>
+            <li v-if="!loggedIn"><router-link :to="{ name: 'login' }">Login</router-link></li>
+            <li v-if="!loggedIn"><router-link :to="{ name: 'register' }">Register</router-link></li>
+            <li v-if="loggedIn"><router-link :to="{ name: 'logout' }">Logout</router-link></li>
+        </ul>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
     export default {
-        
+        computed: {
+            loggedIn() {
+                return this.$store.getters.loggedIn
+            }
+        }
     }
 </script>
 
@@ -47,7 +52,6 @@
     justify-content: flex-end;
     background: #F5F8FA;
     border-bottom: 1px solid lightgrey;
-    margin-bottom: 24px;
 }
 
 .nav a {

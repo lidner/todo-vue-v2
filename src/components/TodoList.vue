@@ -163,7 +163,7 @@ button {
     outline: none;
   }
 }
-.active {
+.activeFilter {
   background: lightgreen;
 }
 

@@ -6,7 +6,8 @@
             <h1>Metall</h1>
             <p>Сервис по реализации металла</p>
             <div class="auth-block">
-                <a class="auth-btn login" href="login.html">Войти</a>
+                <!-- <a class="auth-btn login" href="login.html">Войти</a> -->
+                <router-link class="auth-btn login" :to="{ name: 'login' }">Войти</router-link>
                 <!-- <a class="auth-btn register">Регистрация</a> -->
             </div>
         </div>

@@ -1,16 +1,16 @@
 <template>
     <div>
-        <button :class="{ active: filter == 'all' }" @click="changeFilter('all')">
+        <button :class="{ activeFilter: filter == 'all' }" @click="changeFilter('all')">
           All
         </button>
         <button
-          :class="{ active: filter == 'active' }"
+          :class="{ activeFilter: filter == 'active' }"
           @click="changeFilter('active')"
         >
           Active
         </button>
         <button
-          :class="{ active: filter == 'completed' }"
+          :class="{ activeFilter: filter == 'completed' }"
           @click="changeFilter('completed')"
         >
           Completed

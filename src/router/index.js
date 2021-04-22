@@ -6,6 +6,7 @@ import Home from '../components/marketing/Home.vue'
 import About from '../components/marketing/About.vue'
 import Login from '../components/auth/Login.vue'
 import Register from '../components/auth/Register.vue'
+import Logout from '../components/auth/Logout.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -17,22 +18,42 @@ const routes = [
   {
     path: '/todo',
     name: 'todo',
-    component: App
+    component: App,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/about',
     name: 'about',
-    component: About
+    component: About,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/login',
     name: 'login',
-    component: Login
+    component: Login,
+    meta: {
+      requiresGuest: true
+    }
   },
   {
     path: '/register',
     name: 'register',
-    component: Register
+    component: Register,
+    meta: {
+      requiresGuest: true
+    }
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: Logout,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '*',
