@@ -7,6 +7,7 @@ import SideNavLayout from '@/components/layouts/SideNavLayout.vue'
 import router from './router'
 import store from './store'
 
+
 // window.eventBus = new Vue()
 // export const eventBus = new Vue();
 Vue.prototype.$eventBus = new Vue(); // Global event bus
